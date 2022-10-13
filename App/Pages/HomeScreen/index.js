@@ -1,428 +1,393 @@
-import * as React from 'react';
+import * as React from "react";
 import {
-    View,
-    Text, 
-    SafeAreaView, 
-    StyleSheet,
-    StatusBar, 
-    Image,
-    TouchableOpacity,
-    Alert
-} from 'react-native';
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Alert,
+  Linking,
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import {
-    IconProfile,
-    IconBell,
-    IconHandQr,
-    IconDropdown,
-    IconScan,
-    IconVaccine,
-    IconCovidTest,
-    IconEhac,
-    IconTravelRegulation,
-    IconTelemedicine,
-    IconHealthcare,
-    IconCovid,
-    IconFindHospital,
-    IconStatisCovid
-} from '../../assets';
+  bel,
+  user,
+  hand,
+  centang,
+  scan,
+  vaksin,
+  covid,
+  EMAC,
+  dokter,
+  travel,
+  fasilitas,
+  statistic,
+  hospital,
+} from "../../assets";
 
+const windowHeight = Dimensions.get("window").height;
 
-export default HomeScreen = ({navigation}) => {
-    return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar
-                    barStyle="light-content"
-                    animated={true}
-                    backgroundColor="#ffffff" />
+export default HomeScreen = ({ navigation }) => {
+  return (
+    <View style={styles.bgMainApp}>
+      <View style={styles.container}>
+        <Image source={user} style={styles.imgSize} />
+        <Text style={styles.hi}>Hi, </Text>
+        <Text style={styles.nama}>Rizky Priambodo</Text>
+        <Image source={bel} style={styles.imgSize2} />
+      </View>
 
-        <View style={styles.contentimg}>
-          <Image source={IconProfile} style={styles.imgIcon}/>
-          <Text style={styles.text1}>Hi,</Text>
-          <TouchableOpacity onPress={()=>navigation.navigate('LoginScreen')}>
-            <Text style={styles.text2}>Pargoy</Text>
-          </TouchableOpacity>
-          <Image source={IconBell} style={styles.imgIcon2}/>
+      <View>
+        <Image source={user} style={styles.imgSize} />
+      </View>
+
+      <View style={styles.kotakBiru}>
+        <View>
+          <Text style={styles.text1}>Entering A Public Space?</Text>
+          <Text style={styles.text2}>Stay Alert To Stay Safe</Text>
         </View>
-
-        <View style={styles.content2}>
-            <View style={styles.content3}>
-                <View style={styles.content4}>
-                <Text style={styles.text3}>mau masuk ruang public?</Text>
-                <Text style={styles.text4}>Stay alert to stay safe</Text>
-                </View>
-                <Image source={IconHandQr} style={styles.imgIcon3}/>
-            </View>
-            <View style={styles.contentcheckin}>
-                
-                    <Image source={IconDropdown} style={styles.imgIcon4}/>
-                    <Text style={styles.text5}>Check-in Preference</Text>
-              <View style={styles.contentscan}>
-                <Image source={IconScan} style={styles.imgIcon5}/>
-                <Text style={styles.text6}>Check-in</Text>
-              </View>
-            </View>
+        <View>
+          <Image source={hand} style={styles.logo1} />
         </View>
-        
-        <View style={styles.garis}/>
+      </View>
 
-        <View style={styles.home}>
-          <View style={styles.row1}>
-            <View style={styles.icon1}>
-              <TouchableOpacity onPress={()=>navigation.navigate('ImmunScreen')}>
-                <Image source={IconVaccine} style={styles.vaccine}/>
-              </TouchableOpacity>
-              <Text style={styles.textvaccine}>Vaccine and Immunization</Text>
-            </View>
-            <View style={styles.icon2}>
-              <TouchableOpacity onPress={()=>navigation.navigate('CovidTestScreen')}>
-                <Image source={IconCovidTest} style={styles.covidtest}/>
-              </TouchableOpacity>
-              <Text style={styles.textcovidtest}>Covid-19 Test Result</Text>
-            </View>
-            <View style={styles.icon3}>
-              <TouchableOpacity onPress={()=>navigation.navigate('EhacScreen')}>
-                <Image source={IconEhac} style={styles.ehac}/>
-              </TouchableOpacity>
-              <Text style={styles.textehac}>EHAC</Text>
-            </View>
+      <View style={styles.kotakPutih}>
+        <View style={styles.row}>
+          <Image source={centang} style={styles.panah} />
+          <Text style={styles.fonthitam}>Check-In Prefence</Text>
+        </View>
+        <View style={styles.kotakcheck}>
+          <View style={styles.row}>
+            <Image source={scan} style={styles.scaner} />
+            <Text style={styles.fontbiru}>Check-In </Text>
           </View>
-
-          <View style={styles.row2}>
-              <View style={styles.icon4}>
-              <TouchableOpacity 
-                onPress={() => 
-                  Alert.alert("informasi", "Sedang dalam pengembangan", [
-                    {
-                      text: "ok",
-                      onPress: () => console.log("Ok"),
-                    },
-                  ])
-                }>
-                <Image source={IconTravelRegulation} style={styles.travel}/>
-                <Text style={styles.texttravel}>Travel Regulations</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.icon5}>
-             
-                <Image source={IconTelemedicine} style={styles.telemedicine}/>
-                <Text style={styles.texttelemedicine}>Telemedicine</Text>
-                
-              </View>
-              <View style={styles.icon6}>
-                <Image source={IconHealthcare} style={styles.healthcare}/>
-                <Text style={styles.texthealth}>Healthcare Facility</Text>
-              </View>
-            </View>
-            <View style={styles.row3}>
-              <View style={styles.icon7}>
-                <Image source={IconStatisCovid} style={styles.covid}/>
-                <Text style={styles.textcovid}>Covid-19 Statistic</Text>
-              </View>
-              <View style={styles.icon8}>
-                <Image source={IconFindHospital} style={styles.findhospital}/>
-                <Text style={styles.textfindhospital}>Find Hospital Bed</Text>
-              </View>
-            </View>
         </View>
+      </View>
 
-      </SafeAreaView>
-    );
-  };
+      <View
+        style={{ height: 15, backgroundColor: "#D8D8D8", marginTop: -30 }}
+      ></View>
+
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <TouchableOpacity onPress={() => navigation.navigate("Imunisasi")}>
+            <Image source={vaksin} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Vaccine and Immunization</Text>
+        </View>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("CovidTestScreen")}
+          >
+            <Image source={covid} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Covid-19 Test Results</Text>
+        </View>
+        <View style={styles.column}>
+          <TouchableOpacity onPress={() => navigation.navigate("Ehac")}>
+            <Image source={EMAC} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>EHAC</Text>
+        </View>
+      </View>
+
+      <View style={styles.row1}>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert("Peringatan!!!", "Halaman ini Belum Dibuat", [
+                {
+                  text: "ok",
+                  onPress: () => console.log("ok ditekan"),
+                },
+              ])
+            }
+          >
+            <Image source={travel} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Travel Regulations</Text>
+        </View>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert("Peringatan!!!", "Halaman ini Belum Dibuat", [
+                {
+                  text: "ok",
+                  onPress: () => console.log("ok ditekan"),
+                },
+              ])
+            }
+          >
+            <Image source={dokter} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Telemedicine</Text>
+        </View>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert("Peringatan!!!", "Halaman ini Belum Dibuat", [
+                {
+                  text: "ok",
+                  onPress: () => console.log("ok ditekan"),
+                },
+              ])
+            }
+          >
+            <Image source={fasilitas} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Healthcare Facility</Text>
+        </View>
+      </View>
+
+      <View style={styles.row1}>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert("Peringatan!!!", "Halaman ini Belum Dibuat", [
+                {
+                  text: "ok",
+                  onPress: () => console.log("ok ditekan"),
+                },
+              ])
+            }
+          >
+            <Image source={statistic} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Covid-19 Statistic</Text>
+        </View>
+        <View style={styles.column}>
+          <TouchableOpacity
+            onPress={() =>
+              Alert.alert("Peringatan!!!", "Halaman ini Belum Dibuat", [
+                {
+                  text: "ok",
+                  onPress: () => console.log("ok ditekan"),
+                },
+              ])
+            }
+          >
+            <Image source={hospital} style={styles.gambar2} />
+          </TouchableOpacity>
+          <Text style={styles.tulisan}>Find Hospital Bed</Text>
+        </View>
+        <View style={styles.column}></View>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      backgroundColor: '#ffffff',
-    },
-    contentimg: {
-      backgroundColor:'#ffffff',
-      marginTop:10,
-      alignItems: 'center',
-      flexDirection:'row'
-    },
-    imgIcon:{
-      height:25,
-      width:25,
-      marginLeft:20
-    },
-    text1: {
-      marginLeft:5,
-      fontSize:15,
-      textAlign:'left',
-      color: 'black',
-    },
-    text2:{
-        fontSize:15,
-        color:'black',
-        marginLeft:3,
-        textDecorationLine:'underline'
-    },
-    imgIcon2:{
-        height:23,
-        width:23,
-        marginLeft:120
-    },
-    content2:{
-        marginTop:30,
-        alignContent:'center',
-        alignItems:'center',
-        borderColor:'black',
-        borderWidth:1,
-        borderRadius:10,
-        marginLeft:20,
-        marginRight:20,
-        paddingBottom:20
-    },
-    content3:{
-        height:80,
-        borderTopRightRadius:10,
-        borderTopLeftRadius:10,
-        backgroundColor:'#239BD8',
-        flexDirection:'row',
-    },
-    text3: {
-        marginTop:10,
-        marginLeft:20,
-        fontSize:18,
-        color: 'white',
-      },
-      text4: {
-        fontSize:11,
-        marginLeft:20,
-        color: 'white'
-      },
-    imgIcon3:{
-        height:60,
-        width:60,
-        marginRight:10,
-        marginTop:20
-    },
-    content4:{
-        marginRight:30,
-        backgroundColor:'#239BD8',
-        borderRadius:10,
-    },
-    contentcheckin:{
-        borderBottomLeftRadius:10,
-        borderBottomRightRadius:10,
-        backgroundColor:'#ffffff',
-        flexDirection:'row',
-    },
-    contentscan:{
-        marginLeft:40,
-        marginRight:10,
-        marginTop:12,
-        alignItems:'center',
-        backgroundColor:'#def3ff',
-        borderRadius:20,
-        paddingRight:13,
-        paddingLeft:13,
-        flexDirection:'row',
-    },
-    text5: {
-        marginTop:20,
-        fontSize:14,
-        color: 'black'
-    },
-    imgIcon4:{
-        marginTop:10,
-        height:40,
-        width:40,
-    },
-    imgIcon5:{
-        height:20,
-        width:20,
-    },
-    text6: {
-      marginLeft:5,
-      fontSize:12,
-      color: '#008bde'
-    },
+  bgMainApp: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
+  imgContainer: {
+    alignItems: "center",
+  },
+  container: {
+    marginTop: 20,
+    flexDirection: "row",
+  },
+  row: {
+    flexDirection: "row",
+    flex: 1,
+    marginRight: 15,
+  },
+  row1: {
+    flexDirection: "row",
+    flex: 1,
+    marginTop: -40,
+    marginRight: 15,
+  },
+  column: {
+    flexDirection: "column",
+    flex: 1,
+    marginRight: -25,
+  },
+  tulisan: {
+    flex: 1,
+    marginTop: 5,
+    fontSize: 13,
+    resizeMode: "contain",
+    textAlign: "center",
+  },
+  kotakBiru: {
+    backgroundColor: "#239BD8",
+    padding: 30,
+    marginHorizontal: 19,
+    marginTop: 20,
+    borderWidth: 2,
+    borderColor: "#D9D9D9",
+    borderBottomWidth: 0,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    flexDirection: "row",
+    paddingBottom: 0,
+    paddingEnd: 0,
+  },
+  kotakPutih: {
+    backgroundColor: "white",
+    padding: 30,
+    marginHorizontal: 19,
+    marginTop: -16,
+    marginBottom: 60,
+    borderWidth: 2,
+    borderColor: "#D9D9D9",
+    borderTopWidth: 0,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    flexDirection: "row",
+    paddingBottom: 0,
+  },
+  kotakcheck: {
+    backgroundColor: "#EAF5F9",
+    borderRadius: 20,
+    flexDirection: "row",
+    height: 40,
+    width: 120,
+    marginLeft: 60,
+    marginRight: -20,
+    marginTop: -15,
+  },
+  hi: {
+    textAlign: "left",
+    fontSize: 15,
+    marginTop: 4,
+    left: 15,
+    fontWeight: "bold",
+  },
+  nama: {
+    textAlign: "left",
+    fontSize: 15,
+    marginTop: 4,
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+    left: 16,
+  },
+  text1: {
+    color: "white",
+    fontSize: 15,
+    top: -10,
+    fontWeight: "bold",
+    marginRight: 10,
+  },
+  text2: {
+    fontSize: 12,
+    color: "white",
+    top: -12,
+    opacity: 0.9,
+  },
+  gambar2: {
+    borderRadius: 20,
+    marginLeft: 30,
+    marginTop: 20,
+    height: 80,
+    resizeMode: "contain",
+    width: 80,
+  },
+  fonthitam: {
+    fontSize: 13,
+    marginLeft: -95,
+    fontWeight: "bold",
+    top: -5,
+    color: "#000000",
+  },
+  fontbiru: {
+    fontSize: 12,
+    marginLeft: 10,
+    marginTop: 10,
+    fontWeight: "bold",
+    color: "#259AD5",
+  },
+  logo1: {
+    resizeMode: "contain",
+    height: 60,
+    marginLeft: -20,
+    top: -15,
+    flex: 0,
+  },
+  panah: {
+    resizeMode: "contain",
+    height: 20,
+    marginLeft: -110,
+    top: -5,
+    marginBottom: 20,
+  },
+  scaner: {
+    resizeMode: "contain",
+    width: 23,
+    marginTop: -236,
+    color: "#259AD5",
+    marginLeft: 15,
+  },
+  imgStyle: {
+    marginTop: windowHeight / 8,
+    marginBottom: 20,
+  },
+  Input: {
+    borderWidth: 1,
+    borderColor: "#E91E63",
+    padding: 7,
+    marginStart: 20,
+    fontSize: 17,
+    marginEnd: 20,
+    borderRadius: 10,
+    padding: 10,
+    fontWeight: "bold",
+  },
+  InputPass: {
+    borderWidth: 1,
+    borderColor: "#0f663f",
+    padding: 7,
+    marginStart: 20,
+    fontSize: 17,
+    marginTop: 20,
+    marginEnd: 20,
+    borderRadius: 10,
+    padding: 10,
+    fontWeight: "bold",
+  },
+  imgStyle2: {
+    flexDirection: "row",
+  },
+  imgSize: {
+    resizeMode: "contain",
+    marginRight: -80,
+    marginLeft: -50,
+    marginTop: 2,
+    alignSelf: "flex-start",
+    height: 25,
+    flex: 1,
+  },
+  imgSize2: {
+    width: null,
+    resizeMode: "contain",
+    marginRight: -50,
+    marginLeft: 50,
+    marginTop: 2,
+    height: 25,
+    flex: 1,
+  },
+  headerText: {
+    textAlign: "left",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
 
-    garis:{
-      marginTop:15,
-      height:10,
-      backgroundColor:'#cdd2d5'
-    },
-
-    home:{
-      backgroundColor:'#ffffff'
-    },
-    row1:{
-      flexDirection:'row',
-      backgroundColor:'#ffffff',
-      alignContent:'center',
-      alignItems:'center'
-    },
-
-    icon1:{
-      alignItems:'center',
-      alignContent:'center',
-      marginTop:15,
-      marginLeft:10,
-      height:120,
-      width:120
-    },
-    vaccine:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    textvaccine:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    icon2:{
-      alignItems:'center',
-      alignContent:'center',
-      marginTop:15,
-      height:120,
-      width:110
-    },
-    covidtest:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    textcovidtest:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    icon3:{
-      alignItems:'center',
-      alignContent:'center',
-      marginTop:15,
-      marginRight:15,
-      height:120,
-      width:110
-    },
-    ehac:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    textehac:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    row2:{
-      flexDirection:'row',
-      backgroundColor:'#ffffff',
-      alignContent:'center',
-      alignItems:'center'
-    },
-    icon4:{
-      alignItems:'center',
-      alignContent:'center',
-      marginLeft:20,
-      height:120,
-      width:100,
-      marginTop:10
-    },
-    travel:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    texttravel:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    icon5:{
-      alignItems:'center',
-      alignContent:'center',
-      height:120,
-      width:110,
-      marginLeft:10,
-      marginTop:10
-    },
-    telemedicine:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    texttelemedicine:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    icon6:{
-      alignItems:'center',
-      alignContent:'center',
-      height:120,
-      width:100,
-      marginLeft:5,
-      marginTop:10
-    },
-    healthcare:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    texthealth:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    row3:{
-      flexDirection:'row',
-      backgroundColor:'#ffffff',
-      alignContent:'center',
-      alignItems:'center'
-    },
-    icon7:{
-      alignItems:'center',
-      alignContent:'center',
-      marginLeft:20,
-      height:120,
-      width:100,
-      marginTop:10
-    },
-    covid:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    textcovid:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
-
-    icon8:{
-      alignItems:'center',
-      alignContent:'center',
-      height:120,
-      width:110,
-      marginLeft:10,
-      marginTop:10
-    },
-    findhospital:{
-      height:70,
-      width:70,
-      borderRadius:10
-    },
-    textfindhospital:{
-      marginTop:5,
-      fontSize:13,
-      color:'black',
-      textAlign:'center'
-    },
+  bodyText: {
+    marginTop: 10,
+    marginBottom: 50,
+    fontSize: 16,
+  },
+  footherText: {
+    marginTop: 100,
+    fontSize: 16,
+    marginBottom: 0,
+  },
+  customeButton: {
+    marginTop: 30,
+    marginRight: 30,
+    marginLeft: 30,
+  },
 });

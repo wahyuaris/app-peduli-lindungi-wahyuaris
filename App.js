@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import LoginScreen from "./src/pages/LoginScreen";
+import SplashScreen from "./src/pages/SplashScreen";
+import React from "react";
+import Router from "./src/router/Router";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Silahkan rubah disini</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [currentScreen, setCurrentScreen] = React.useState("Splash");
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  React.useEffect(() => {
+    setTimeout(() => {
+      setCurrentScreen("Login");
+    }, 2000);
+  }, []);
+
+  let mainScreen = currentScreen === "Splash" ? <SplashScreen /> : <Router />;
+
+  return <>{mainScreen}</>;
+}

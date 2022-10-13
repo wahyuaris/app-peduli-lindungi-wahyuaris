@@ -1,15 +1,15 @@
-import SplashScreen from './SplashScreen';
-import LoginScreen from './LoginScreen';
-import HomeScreen from './HomeScreen';
-import ImmunScreen from './ImmunScreen';
-import EhacScreen from './EhacScreen';
-import CovidTestScreen from './CovidTestScreen';
+import HomeScreen from "./HomeScreen";
+import SplashScreen from "./SplashScreen";
+import LoginScreen from "./LoginScreen";
+import CovidTestScreen from "./CovidTestScreen";
+import Imunisasi from "./Imunisasi";
+import Ehac from "./Ehac";
 
 export {
-    SplashScreen,
-    LoginScreen,
-    HomeScreen,
-    ImmunScreen,
-    EhacScreen,
-    CovidTestScreen
+  HomeScreen,
+  SplashScreen,
+  LoginScreen,
+  CovidTestScreen,
+  Imunisasi,
+  Ehac,
 };

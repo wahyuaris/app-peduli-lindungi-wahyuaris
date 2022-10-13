@@ -1,104 +1,107 @@
-import * as React from 'react';
+import * as React from "react";
 import {
-    View,
-    Text, 
-    SafeAreaView, 
-    StyleSheet,
-    StatusBar, 
-    Image,
-} from 'react-native';
-import {
-    LogoPeduli,
-    LogoKpcpen,
-    LogoKominfo,
-    LogoKemenkes,
-    LogoBumn
-} from '../../assets';
+  SafeAreaView,
+  StatusBar,
+  View,
+  Image,
+  Text,
+  StyleSheet,
+} from "react-native";
+import { L_peduli, kpc, kominfo, kemenkes, bumn } from "../../assets";
 
-export default SplashScreen = ({navigation}) => {
+export default SplashScreen = ({ navigation }) => {
   React.useEffect(() => {
     setTimeout(() => {
-      navigation.replace('LoginScreen')
-     }, 3000)
-    }, [navigation]);
+      navigation.replace("LoginScreen");
+    }, 2000);
+  }, [navigation]);
 
-    return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar
-                    barStyle="light-content"
-                    animated={true}
-                    backgroundColor="#ffffff" />
+  return (
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        barStyle="light-content"
+        animated={true}
+        backgroundColor="#FFFFFF"
+      />
 
-        <View style={styles.contentimg}>
-          <Image source={LogoPeduli} style={styles.imgIcon}/>
-        </View>
+      <View style={styles.headerImg}>
+        <Image source={L_peduli} style={styles.imgHeader} />
+      </View>
 
-        <Text style={styles.text1}>Bekerja sama dengan:</Text>
+      <Text style={styles.textFoother}>Bekerjasama Dengan :</Text>
 
-        <View style={styles.content}>
-        <Image source={LogoKpcpen} style={styles.imgIcon2}/>
-        <Image source={LogoKominfo} style={styles.imgIcon3}/>
-        <Image source={LogoKemenkes} style={styles.imgIcon4}/>
-        <Image source={LogoBumn} style={styles.imgIcon5}/>
-        </View>
-      </SafeAreaView>
-    );
-  };
-  
-  const styles = StyleSheet.create({
-    container: {
-      flex:1,
-      backgroundColor: '#ffffff',
-    },
-    contentimg: {
-      backgroundColor:'#ffffff',
-      marginTop:200,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    imgIcon:{
-      height:70,
-      width:300
-    },
-    content: {
-      marginTop:10,
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection:'row'
-    },
-    text1: {
-      marginTop:300,
-      marginLeft:30,
-      fontSize:10,
-      textAlign:'left',
-      fontFamily:'Lato-Regular',
-      color: 'black',
-    },
-    imgIcon2:{
-      marginRight:10,
-      height:35,
-      width:70,
-      alignItems:'center',
-      alignContent:'center'
-    },
-    imgIcon3:{
-      marginRight:10,
-      height:45,
-      width:40,
-      alignItems:'center',
-      alignContent:'center'
-    },
-    imgIcon4:{
-      marginRight:10,
-      height:35,
-      width:80,
-      alignItems:'center',
-      alignContent:'center'
-    },
-    imgIcon5:{
-      height:30,
-      width:60,
-      alignItems:'center',
-      alignContent:'center'
-    },
-  });
+      <View style={styles.content}>
+        <Image source={kpc} style={styles.logo1} />
+        <Image source={kominfo} style={styles.logo2} />
+        <Image source={kemenkes} style={styles.logo3} />
+        <Image source={bumn} style={styles.logo4} />
+      </View>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
+  imgHeader: {
+    backgroundColor: "#FFFFFF",
+    marginTop: 200,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  imgHeader: {
+    width: 283,
+    height: 67,
+    left: 50,
+    top: 320,
+  },
+  content: {
+    marginTop: 650,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  textFoother: {
+    position: "absolute",
+    width: 124,
+    height: 30,
+    left: 38,
+    right: 228,
+    top: 670,
+    bottom: 131,
+    fontFamily: "Lato-Regular",
+    fontStyle: "normal",
+    fontSize: 12,
+    color: "black",
+  },
+  logo1: {
+    marginRight: 10,
+    height: 35,
+    width: 70,
+    alignItems: "center",
+    alignContent: "center",
+  },
+  logo2: {
+    marginRight: 10,
+    height: 45,
+    width: 40,
+    alignItems: "center",
+    alignContent: "center",
+  },
+  logo3: {
+    marginRight: 10,
+    height: 35,
+    width: 80,
+    alignItems: "center",
+    alignContent: "center",
+  },
+  logo4: {
+    marginRight: 10,
+    height: 30,
+    width: 60,
+    alignItems: "center",
+    alignContent: "center",
+  },
+});

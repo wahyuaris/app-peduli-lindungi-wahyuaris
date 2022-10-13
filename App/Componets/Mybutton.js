@@ -1,39 +1,34 @@
 import * as React from 'react';
 import {
-    Text, 
-    TouchableOpacity,
-    StyleSheet,
+  Text, 
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
-export const PrimaryButton = (props)=>{
+const PrimaryButton=(props) =>{
     return (
-        <TouchableOpacity onPress={props.onPress} style={[style.btnPrimary, props.customeStyle]}>
-            <Text style={{ color:'white'}}>{props.title}</Text>
+        <TouchableOpacity  style={[styles.btnContainer, props.style]} onPress={props.onPress}>
+            <Text style={styles.btnText}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
 
-export const SuccessButton = (props)=>{
-    return (
-        <TouchableOpacity onPress={props.onPress} style={[style.btnSuccess, props.customeStyle]}>
-            <Text style={{ color:'white'}}>{props.title}</Text>
-        </TouchableOpacity>
-    )
-}
-
-const style = StyleSheet.create({
-    btnPrimary:{
-        borderRadius:40,
-        marginTop:10,
-        padding:15,
-        alignItems:'center',
-        backgroundColor:'#008bde'
+const styles = StyleSheet.create({
+    btnContainer:{
+        backgroundColor: '#006175',
+        alignItems: "center",
+        padding: 10,
+        marginTop: 30,
+        marginLeft: 34,
+        marginRight: 34,
+        borderRadius: 10,
     },
-    btnSuccess:{
-        borderRadius:40,
-        marginTop:10,
-        padding:15,
-        alignItems:'center',
-        backgroundColor:'#00AF3C'
-    }
+    btnText:{
+        color: "white",
+        fontWeight: "bold",
+        fontFamily: "Poppins-Bold",
+        fontSize: 18,
+    },
 })
+
+export default PrimaryButton;

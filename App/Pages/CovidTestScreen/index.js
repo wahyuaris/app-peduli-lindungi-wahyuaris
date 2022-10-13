@@ -1,92 +1,53 @@
-import * as React from 'react';
-import {
-    View,
-    Text, 
-    SafeAreaView, 
-    StyleSheet,
-    StatusBar, 
-    Image,
-    TouchableOpacity
-} from 'react-native';
-import {
-    IconBack,
-    IconEmpty
-} from '../../assets';
+import * as React from "react";
+import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import { logoempty } from "../../assets";
+const windowHeight = Dimensions.get("window").height;
 
-export default CovidTestScreen = ({navigation}) => {
-  
-      return (
-        <SafeAreaView style={styles.container}>
-          <StatusBar
-                      barStyle="light-content"
-                      animated={true}
-                      backgroundColor="#ffffff" />
+export default CovidTestScreen = ({ navigation }) => {
+  return (
+    <View style={styles.bgApp}>
+      <View style={styles.imgContainer}>
+        <Image source={logoempty} style={styles.imgStyle} />
+        <Text>You do not have a history of COVID-19 test</Text>
+        <Text>results. Make sure you do a COVID-19 tes at a laboratory</Text>
+        <Text>affiliated with the Ministry of Health: PCR test lab</Text>
+        <Text>or Antigen test lab</Text>
+      </View>
+    </View>
+  );
+};
 
-          <View style={styles.header}>
-            <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')}>
-              <Image source={IconBack} style={styles.back}/>
-            </TouchableOpacity>
-            <Text style={styles.textjudul}>Covid-19 Test Result</Text>
-          </View>
-
-          <View style={styles.body}>
-            <Image source={IconEmpty} style={styles.empty}/>
-          </View>
-
-          <View style={styles.textbody}>
-            <Text style={styles.isiempty}>You do not have a history of COVID-19 test</Text>
-            <Text style={styles.isiempty}>results. Make sure you do a COVID-19 test at a laboratory</Text>
-            <Text style={styles.isiempty}>affilated with the ministry of Health: <Text style={styles.textbiru}>PCR test lab </Text>or</Text>
-            <Text style={styles.textbiru}>Antigen test lab </Text>
-          </View>
-
-        </SafeAreaView>
-      );
-    };
-    
-    const styles = StyleSheet.create({
-      container: {
-        flex:1,
-        backgroundColor: '#ffffff',
-      },
-      header: {
-        backgroundColor:'#ffffff',
-        marginTop:45,
-        alignItems: 'center',
-        flexDirection:'row'
-      },
-      back:{
-        height:20,
-        width:20,
-        marginLeft:20
-      },
-      textjudul:{
-        marginLeft:15,
-        fontSize:18,
-        textAlign:'left',
-        color: 'black',
-        fontFamily:'Lato-Bold'
-      },
-      body:{
-        alignItems:'center',
-        alignContent:'center',
-        backgroundColor:'#ffffff',
-        marginTop:60,
-      },
-      empty:{
-        height:220,
-        width:220
-      },
-      textbody:{
-        textAlign:'center',
-        alignItems:'center',
-        marginTop:30
-      },
-      isiempty:{
-        fontSize:13
-      },
-      textbiru:{
-        fontSize:13,
-        color:'#54B9ED'
-      }
-    });
+const styles = StyleSheet.create({
+  bgApp: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  imgContainer: {
+    alignItems: "center",
+  },
+  container: {
+    margin: 40,
+  },
+  imgStyle: {
+    marginTop: windowHeight / 7,
+    marginBottom: 20,
+    height: 300,
+    width: 300,
+  },
+  bodyText: {
+    marginTop: 10,
+    marginBottom: 50,
+    fontSize: 16,
+  },
+  customeButton: {
+    marginTop: 30,
+    marginRight: 30,
+    marginLeft: 30,
+  },
+  teksvac: {
+    fontWeight: "bold",
+    fontSize: 20,
+    marginTop: windowHeight / 17,
+    marginLeft: 50,
+  },
+});
